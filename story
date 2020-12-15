@@ -1,5 +1,5 @@
 # Practice
-
+<!DOCTYPE html>
 <html>
 <head>
 <title>Start</title> 
