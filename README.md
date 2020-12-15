@@ -2,12 +2,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Page Title</title>
+<title>story</title>
 </head>
 <body>
 
-<h1>This is a Heading</h1>
-<p>This is a paragraph.</p>
+<h1>Read the following</h1>
+<p>there lived a small girl</p>
 
 </body>
 </html>
