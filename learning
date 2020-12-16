@@ -6,7 +6,6 @@
 <body>
 <div id="header">
 <p id="name">Sandhya Lakshmi/p>
-         <a href="mailto:sandhyalakshmi2196@gmail.com" target="_blank"><p id="email">sandhyalakshmi2196@gmail.com</p></a>
-     
+         <a><p id="email">sandhyalakshmi2196@gmail.com</p></a>
     </body>
 </html>
