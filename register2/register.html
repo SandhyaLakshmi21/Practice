@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>REGISTRATION</title>
+        <link rel="stylesheet" type="text/css" href="stylesheet.css" />
+        <script type="text/javascript" src="script.js"></script>
+    </head>
+    <body>
+        
+        <form action="action.html" name="form" id="form" method="GET">
+        <h1>Sign Up</h1>
+      	Name<br>
+      	<input type="text" id="name" name="name"><br>
+        Email<br>
+  <input type="text" id="email" name="email"><br>
+        Retype email<br>
+      	<input type="text" name="retype_email"><br>
+        Create a password<br>
+	<input type="password" id="pwd" name="password"><br>
+        Retype password<br>
+	<input type="password" id="cpwd" name="retype_password"><br>
+            
+      	<div class="button">
+          <input type="submit" class="button" value="Set Up Account">
+        </div>
+        
+  </form>
+  <script>
+    const name= Document.getElementById("name");
+    const email= Document.getElementById("email");
+
+    form.addEventListener('submit',(e)=>{
+      validate();
+    })
+    function validate(){
+      if (name.length <= 3){
+        alert("enter name")
+      }		
+    } 
+  </script>  
+</body>
+</html>
