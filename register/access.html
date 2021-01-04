@@ -1,0 +1,36 @@
+<html>
+<html>
+<body>
+
+WELCOME.... <span id="result"></span>
+<script>
+window.addEventListener('load', () =>
+{
+    const params=(new URL(document.location)).searchParams;
+    const fname =params.get("fname");
+    const uname =params.get("uname");
+    const location =params.get("location");
+    const gender =params.get("gender");
+    
+
+    document.getElementById("fname").innerText="name:"+fname;
+    document.getElementById("uname").innerText="username:"+uname;
+    document.getElementById("location").innerText="location:"+location;
+    document.getElementById("gender").innerText="gender:"+gender;
+}
+</script>
+ <h2>
+    Name: <span id="result-name"/>
+ </h2>
+ <h2>
+    Username: <span id="result-uname"/>
+ </h2>
+ <h2>
+    Location: <span id="result-location"/>
+ </h2>
+ <h2>
+    Gender: <span id="result-gender"/>
+ </h2>
+
+</body>
+</html>
