@@ -8,7 +8,7 @@ function addData(data){
     }
 }
 const xhr = new XMLHttpRequest();
-xhr.open("GET","req.text");
+xhr.open("GET","https://jsonplaceholder.typicode.com/posts");
 xhr.send();
 
 xhr.onreadystatechange = ()=>{
