@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constructor</title>
+</head>
+<body>
+    <h1>Javascript object constructors</h1>
+    <h3 id="demo"></h3>
+
+
+    <script>
+        function employee(name,email,designation,location){
+            this.name = name;
+            this.email = email;
+            this.designation = designation;
+            this.location = location;
+        }
+
+    var employee = new employee("Sandhya","sandy@gmail.com","Microbiologist","Chennai");
+        let show = document.getElementById("demo")
+        show.innerHTML = employee.name+" of "+employee.email+ " works as "+employee.designation+ " and is travelling from "+employee.location;
+    </script>
+</body>
+</html>
