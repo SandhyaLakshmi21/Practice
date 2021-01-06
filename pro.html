@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type='text/javascript'
+  src='http://code.jquery.com/jquery-1.9.1.js'></script>
+<script type='text/javascript'>
+$(window).load(function(){<!--   w ww.  ja v  a2s  .co m-->
+    HTMLInputElement.prototype.doStuff = function(){
+        console.log('hey');
+    }
+    var fileElement = document.getElementById('file');
+    fileElement.doStuff();
+});
+</script>
+</head>
+<body>
+  <input type="file" id="file" />
+</body>
+</html>
