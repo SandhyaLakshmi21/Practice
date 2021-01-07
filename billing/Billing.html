@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Orders Today</title>
+    <link href="billing.css" rel="stylesheet" type="text/css" />
+</head>
+<body onload='hideTotal()'>
+    <div id="wrap">
+    <form action="" id="Order" onsubmit="return false;"></form>
+    <div>
+        <div class="cont_order">
+        <fieldset>
+         <legend>Menu</legend>
+         <label >Juices</label>
+         <input type="radio" style="vertical-align"  name="Juicename" value="Mosambi"
+         onclick="calculateTotal()" />
+         Mosambi (₹120)
+         <input type="radio"  style="vertical-align" name="Juicename" value="Watermelon"
+         onclick="calculateTotal()" />
+         Watermelon (₹150)
+         <input type="radio"  style="vertical-align"  name="Juicename" value="Grapes"
+         onclick="calculateTotal()" />
+         Grapes (₹160)
+         <input type="radio"  style="vertical-align" name="Juicename" value="Avacoda"
+         onclick="calculateTotal()" />
+         Avacoda (₹180)
+         Quantity <input type="text" style=margin-left name="quantity" id="quantity" />
+      
+         
+         <p>
+         <label for='icecream' class="inlinelabel">
+         Add Icecream (₹30)</label>
+         <input type="checkbox" id="icecream" name='icecream'
+         onclick="calculateTotal()" />
+        </p>
+      
+         <p>
+         <label class="inlinelabel" for='Parcel'>
+         Parcel Charges(₹20)</label>
+         <input type="checkbox" id="Parcel"
+         name="Parcel" onclick="calculateTotal()" />
+         </p>
+         <div id="totalPrice"></div>
+      
+         </fieldset>
+        </div>
+     </form>
+     <script>
+
+    var juice_prices = new Array();
+    juice_prices["Mosambi"]=120;
+    juice_prices["Watermelon"]=150;
+    juice_prices["Grapes"]=160;
+    juice_prices["Avacoda"]=180;
+
+    function getjuicecost()
+{
+
+    var juicecost=0;
+    var theForm = document.forms["Order"];
+    var Juicename = theForm.elements["Juicename"];
+    for(var i = 0; i < Juicename.length; i++)
+    {
+        //if the radio button is checked
+        if(Juicename[i].checked)
+        {
+            juicecost = juice_prices[Juicename[i].value];
+            break;
+        }
+    }
+     return juicecost;
+}
+
+    function geticecreamprice()
+{
+    var icecreamprice=0;
+    var theForm = document.forms["Order"];
+    var icecream = theForm.elements["icecream"];
+5
+    if(icecream.checked==true)
+    {
+        icecreamprice=30;
+    }
+    return icecreamprice;
+}
+
+function parcelprice()
+{
+    var parcelprice=0;
+    var theForm = document.forms["Order"];
+    var parcel = theForm.elements["Parcel"];
+    if(Parcel.checked==true){
+        parcelprice=20;
+    }
+    return parcelprice;
+}
+
+    function getQuantity()
+{
+    var theForm = document.forms["Juice_name"];
+    var quantity = theForm.elements["quantity"];
+    var howmany =0;
+    if(quantity.value!="")
+    {
+        howmany = parseInt(quantity.value);
+    }
+return howmany;
+}
+function calculateTotal()
+{
+    var Total_Price = getjuicecost() + icecreamprice() + parcelprice();
+
+    //display the result
+    var use = document.getElementById("totalPrice").value;
+    divobj.style.display='block';
+    divobj.innerHTML = "Total Price For the Juice ₹"+Total_Price;
+}
+     </script>
+     <button onclick="getDisplay()">Submit</button>
+    </div>
+    <div id="display">
+    </div> 
+     
+</body>
+</html>
