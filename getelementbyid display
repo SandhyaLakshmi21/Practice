@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>get value</title>
+</head>
+<body>
+<script type="text/javascript">
+function getDisplay(){
+    var use = document.getElementById("username").value;
+    var email = document.getElementById("email").value;
+    document.getElementById("display").innerHTML = "Username:" + use + "<br/>Email:" + email;
+}
+</script>
+    <div id="whole">
+        Username: <input type="text" name="username" id="username">
+        <br/>
+        Email : <input type="email" name='email' id="email"><br/>
+        <button onclick="getDisplay()">Submit</button>
+    </div>
+    <div id="display">
+    </div>    
+</body>
+</html>
