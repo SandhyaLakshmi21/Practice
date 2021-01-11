@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Orders Today</title>
+    <script type="text/javascript" src="billing2.js"></script>
+    <link href="billing2.css" rel="stylesheet" type="text/css" />
+</head>
+<body onload='hideTotal()'>
+    <div id="wrap">
+    <form action="" id="Order" onsubmit="return false;"></form>
+    <div>
+        <div class="cont_order">
+        <fieldset>
+         <legend>Menu</legend>
+         <label >Juices</label>
+         <label class='check'><input type="checkbox" name="Juicename" id=J1 value="120" 
+         onclick="calculateTotal()" /> Mosambi (120)</label><br/>
+         Quantity <Input type="text" name="quantity" id="quantity1" />
+         <label class='check'><input type="checkbox" name="Juicename" id=J2 value="150"
+         onclick="calculateTotal()" /> Watermelon (150)</label><br/>
+         Quantity <Input type="text" name="quantity" id="quantity2" />
+         <label class='check' ><input type="checkbox" name="Juicename" id=J3 value="160"
+         onclick="calculateTotal()" /> Grapes (160)</label><br/>
+         Quantity <Input type="text" name="quantity" id="quantity3" />
+         <label class='check'><input type="checkbox" name="Juicename" ID=J4 value="180"
+         onclick="calculateTotal()" /> Avacoda (180)</label><br/>
+         Quantity <Input type="text" name="quantity" id="quantity4" />
+      
+         
+         <p>
+         <label for='icecream' class="inlinelabel">
+         Add Icecream (30)</label>
+         <input type="checkbox" id="icecream" name='icecream'
+         onclick="calculateTotal()" />
+        </p>
+      
+         <p>
+         <label class="inlinelabel" for='Parcel'>
+         Parcel Charges(20)</label>
+         <input type="checkbox" id="Parcel"
+         name="Parcel" onclick="calculateTotal()" />
+         </p>
+         <div id="totalPrice"></div>      
+         </fieldset>
+        <div>
+        <input type='button' id='submit' value='Submit' onclick="calculateTotal()" />
+    </div> 
+     </form>
+     <p>The Result is : <br>
+        <span id = "result"></span>
+        </p>
+    </body>
+    </html>
