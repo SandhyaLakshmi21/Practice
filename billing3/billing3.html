@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Orders Today</title>
+    <script type="text/javascript" src="billing3.js"></script>
+    <link href="billing2.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+         <h2>Juiceshop<h2>
+             <div class="container-fluid">
+                 <div class="part1">
+                    <fieldset>
+                        <legend>Information</legend>
+                        Customer Name:<input type="text" id="name"> </br>
+                        Customer EmailID:<input type="text" id="email"> </br>
+                    </fieldset>
+                </div>     
+
+                    <div class="part2">
+                        <fieldset>
+                            <legend>Your Order</legend>
+                            Mosambi(Rs.120): <input type="text" name="Juicename" id="Mosambi"><br/>
+                            Watermelon(Rs.150): <input type="text" name="Juicename" id="Watermelon"><br/>
+                            Grapes(Rs.160): <input type="text" name="Juicename" id="Grapes"><br/>
+                            Avacoda(Rs.180): <input type="text" name="Juicename" id="Avacoda"><br/>
+                        </fieldset>
+                    </div>
+
+             </div>
+             
+             <div class="container">
+                <fieldset>
+                    <legend>Your Bill</legend>
+                    <h3>Name: <span id="name2"></span></h3>
+                    <h3>Email: <span id="email2"></span></h3>          
+                    <table border="1">
+                    <thread>
+                    <tr><th>Menu</th><th>price</th><th>Quantity</th><th>Amount</th></tr>
+                    <tr><td>Mosambi</td><td>Rs.120</td><td>120x1 = 120 </td></tr>
+                    </thread>
+                    <tbody id="Billstatement"></tbody>                           
+                    </table>
+                </fieldset>
+        <h1>Total Amount:Rs.120</h1>
+    </div>
+</div>
+    </body>
+    </html>
