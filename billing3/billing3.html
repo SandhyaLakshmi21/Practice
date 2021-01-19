@@ -1,49 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Orders Today</title>
-    <script type="text/javascript" src="billing3.js"></script>
-    <link href="billing2.css" rel="stylesheet" type="text/css" />
+    <title>Document</title>
+    <link rel="stylesheet" href="billing3.css">
 </head>
 <body>
-
-         <h2>Juiceshop<h2>
+    <table>
+        <tr>
+            <td>
+                <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
+                 <h2>Juiceshop<h2>             
              <div class="container-fluid">
-                 <div class="part1">
+                <div class="container">
+                   <div class="part1">
                     <fieldset>
                         <legend>Information</legend>
-                        Customer Name:<input type="text" id="name"> </br>
-                        Customer EmailID:<input type="text" id="email"> </br>
+                        <label>Name*</label><label class="validation-error hide" id="nameValidationError">This field is required.</label>
+                        <input type="text" id="name"><br>
+                        EmailID:<input type="text" id="email"><br>
                     </fieldset>
                 </div>     
 
-                    <div class="part2">
-                        <fieldset>
-                            <legend>Your Order</legend>
-                            Mosambi(Rs.120): <input type="text" name="Juicename" id="Mosambi"><br/>
-                            Watermelon(Rs.150): <input type="text" name="Juicename" id="Watermelon"><br/>
-                            Grapes(Rs.160): <input type="text" name="Juicename" id="Grapes"><br/>
-                            Avacoda(Rs.180): <input type="text" name="Juicename" id="Avacoda"><br/>
-                        </fieldset>
-                    </div>
+                <div class="part2">
+                    <fieldset>
+                        <legend>Your Order</legend>
+                        Mosambi(Rs.120): <input type="number" name="Juicename" id="Mosambi"><br/>
+                        Watermelon(Rs.150): <input type="number" name="Juicename" id="Watermelon"><br/>
+                        Grapes(Rs.160): <input type="number" name="Juicename" id="Grapes"><br/>
+                        Avacoda(Rs.180): <input type="number" name="Juicename" id="Avacoda"><br/>
+                    </fieldset>
+                </div>
 
-             </div>
-             
-             <div class="container">
+            </div>
+            <div class="container">
                 <fieldset>
                     <legend>Your Bill</legend>
                     <h3>Name: <span id="name2"></span></h3>
                     <h3>Email: <span id="email2"></span></h3>          
-                    <table border="1">
-                    <thread>
-                    <tr><th>Menu</th><th>price</th><th>Quantity</th><th>Amount</th></tr>
-                    <tr><td>Mosambi</td><td>Rs.120</td><td>120x1 = 120 </td></tr>
-                    </thread>
-                    <tbody id="Billstatement"></tbody>                           
+                    <table class="opp" id="Billstatement" border="1" resetForm();>
+                        <thread>
+                             <tr>
+                                 <th >Menu</th><th>price</th><th>Quantity</th><th>Amount</th>
+                             </tr>                           
+                        </thread>                       
                     </table>
                 </fieldset>
-        <h1>Total Amount:Rs.120</h1>
+                <h1>Total Amount: Rs. <span id="amount"></span></h1>
+                    <div  class="form-action-buttons">
+                        <input type="submit" value="Submit"
+                        >
+                    </div>
+                </form>
+            </td>
+            <td>
+                <h2>Todays Sales</h2>
+                <table class="list" id="disp">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Billamount</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <div>
+        <h2>grandtotal</h2>
+        <p id="grandtotal">0</p>
     </div>
-</div>
+    </div>
+<script>
+ 
+
+var mosambi_stock=100, Watermelon_stock=80, Grapes_stock=70, Avacoda_stock=60; 
+var Mosambi_price=120, Watermelon_price=150, Grapes_price=160, Avacoda_price=180;
+var Mosambi_q=0; Watermelon_q=0; Grapes_q=0; Avacoda_q=0;
+var MosambiPriceShow ="", WatermelonPriceShow ="", GrapesPriceShow ="", AvacodaPriceShow="" ;
+
+
+document.getElementById("name").addEventListener("keyup",function(){
+document.getElementById("name2").innerHTML=this.value;
+});
+
+document.getElementById("email").addEventListener("keyup",function(){
+document.getElementById("email2").innerHTML=this.value;
+});
+
+
+document.getElementById("Mosambi").addEventListener("keyup",function(){
+    if(this.value==""||this.value==0){
+        MosambiPriceShow =""
+        ShowBill();
+    }else{
+        Mosambi_q = this.value;
+        MosambiPriceShow = "<tr><td>Mosambi</td><td>Rs."+Mosambi_price+" </td><td>"+Mosambi_q+"</td><td>"+Mosambi_price+"x"+Mosambi_q+"="+Mosambi_price*Mosambi_q+"</td></tr>";
+    ShowBill();
+    }
+ });
+
+ document.getElementById("Watermelon").addEventListener("keyup",function(){
+    if(this.value==""||this.value==0){
+        WatermelonPriceShow ="";
+        ShowBill();
+    }else{
+        Watermelon_q = this.value;
+        WatermelonPriceShow = "<tr><td>Watermelon</td><td>Rs."+Watermelon_price+" </td><td>"+Watermelon_q+"</td><td>"+Watermelon_price+"x"+Watermelon_q+"="+Watermelon_price*Watermelon_q+"</td></tr>";
+        ShowBill();
+    }
+ });
+
+ document.getElementById("Grapes").addEventListener("keyup",function(){
+    if(this.value==""||this.value==0){
+        GrapesPriceShow ="";
+        ShowBill();
+    }else{
+        Grapes_q = this.value;
+        GrapesPriceShow = "<tr><td>Grapes</td><td>Rs."+Grapes_price+" </td><td>"+Grapes_q+"</td><td>"+Grapes_price+"x"+Grapes_q+"="+Grapes_price*Grapes_q+"</td></tr>";
+        ShowBill();
+    }
+ });
+
+ document.getElementById("Avacoda").addEventListener("keyup",function(){
+    if(this.value==""||this.value==0){
+        document.getElementById("Billstatement").innerHTML="";
+        AvacodaPriceShow ="";
+        ShowBill();
+    }else{
+        Avacoda_q = this.value;
+        AvacodaPriceShow = "<tr><td>Mosambi</td><td>Rs."+Avacoda_price+" </td><td>"+Avacoda_q+"</td><td>"+Avacoda_price+"x"+Avacoda_q+"="+Avacoda_price*Avacoda_q+"</td></tr>";
+        ShowBill();
+    }
+ });
+
+ function ShowBill(){ 
+     document.getElementById("Billstatement").innerHTML=MosambiPriceShow+WatermelonPriceShow+GrapesPriceShow+AvacodaPriceShow;
+     document.getElementById("amount").innerHTML=Mosambi_price*Mosambi_q+Watermelon_price*Watermelon_q+Grapes_price*Grapes_q+Avacoda_price*Avacoda_q;
+     bat=Mosambi_price*Mosambi_q+Watermelon_price*Watermelon_q+Grapes_price*Grapes_q+Avacoda_price*Avacoda_q;  
+    }
+ 
+var selectedRow = null
+
+ function onFormSubmit() {
+        if(validate()) {
+            var formData = readFormData();
+            if (selectedRow == null){
+            insertNewRecord(formData);
+            }
+        resetForm();
+        calculatetotal()
+    }
+}
+
+ function readFormData()
+  {
+    var formData = {};
+    formData["name"] = document.getElementById("name").value;
+    formData["email"] = document.getElementById("email").value;
+    formData["amount"] = document.getElementById("amount").innerHTML;
+    return formData;
+
+}
+
+function insertNewRecord(data) {
+    var table = document.getElementById("disp").getElementsByTagName('tbody')[0];
+    var newRow = table.insertRow(table.length);
+    cell1 = newRow.insertCell(0);
+    cell1.innerHTML = data.name;
+    cell2 = newRow.insertCell(1);
+    cell2.innerHTML = data.email;
+    cell3 = newRow.insertCell(2);
+    cell3.innerHTML = data.amount;
+    cell4 = newRow.insertCell(3);
+    cell4.innerHTML = data.stock;
+    cell5 = newRow.insertCell(4);
+    cell5.innerHTML = `<a onClick="onDelete(this)">Delete</a>`;
+
+}
+
+function resetForm() {
+    document.getElementById("name").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("name2").innerHTML = "";
+    document.getElementById("email2").innerHTML = "";
+    document.getElementById("Mosambi").value = 0;
+    document.getElementById("Watermelon").value = 0;
+    document.getElementById("Grapes").value = 0;
+    document.getElementById("Avacoda").value = 0;
+    document.getElementById("Billstatement").innerHTML = ""; 
+    document.getElementById("amount").innerHTML = "";
+    MosambiPriceShow ="";
+    WatermelonPriceShow ="";
+    GrapesPriceShow ="";
+    AvacodaPriceShow ="";
+
+
+    //document.getElementById("AvacodaPriceShow").value = "";
+
+    selectedRow = null;
+}
+
+function onDelete(td) {
+    if (confirm('Are you sure to delete this record ?')) {
+        row = td.parentElement.parentElement;
+        document.getElementById("disp").deleteRow(row.rowIndex);
+        resetForm();
+    }
+}
+
+function validate() {
+    isValid = true;
+    if (document.getElementById("name").value == "") {
+        isValid = false;
+        document.getElementById("nameValidationError").classList.remove("hide");
+    } else {
+        isValid = true;
+        if (!document.getElementById("nameValidationError").classList.contains("hide"))
+            document.getElementById("nameValidationError").classList.add("hide");
+    }
+    return isValid;
+}
+
+
+var tpo=0;
+var amount=document.getElementById("amount").innerHTML;
+function calculatetotal(){
+var temp=0;
+temp+=bat;
+tpo+=temp;
+document.getElementById("grandtotal").innerHTML=tpo;
+}
+</script>
     </body>
     </html>
