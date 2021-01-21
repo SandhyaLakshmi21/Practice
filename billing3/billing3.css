@@ -1,14 +1,15 @@
 body > table{
-    width: 80%;
+    width: 100%;
 }
 
-table{
+.table{
     color: black;
-    background-color: ;
     border-collapse: collapse;
 }
 table.list{
     width:100%;
+    background-color:rosybrown
+    color: black;
 }
 
 td, th {
@@ -22,7 +23,7 @@ tr:nth-child(even),table.list thead>tr {
 }
 
 input[type=text], input[type=number] {
-    width: 100%;
+    width: 20%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -33,8 +34,8 @@ input[type=text], input[type=number] {
 
 input[type=submit]{
     width: 30%;
-    background-color: #ddd;
-    color: #000;
+    background-color:black;
+    color: white;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
@@ -71,3 +72,5 @@ disp{
     color: red;
 
 }
+
+h2.stock

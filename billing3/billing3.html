@@ -13,7 +13,7 @@
              <div class="container-fluid">
                 <div class="container">
                    <div class="part1">
-                    <fieldset>
+                    <fieldset> 
                         <legend>Information</legend>
                         <label>Name*</label><label class="validation-error hide" id="nameValidationError">This field is required.</label>
                         <input type="text" id="name"><br>
@@ -50,6 +50,27 @@
                         <input type="submit" value="Submit"
                         >
                     </div>
+                    <div class="container">
+                        <fieldset>
+                    <h2>Stock</h2>
+    Mosambi No:<input type="number" class=fruitno id="mos_quan"><br/>
+    Watermelon No:<input type="number" class=fruitno id="wat_quan"><br/>
+    Grapes No:<input type="number" class=fruitno id="gra_quan"><br/>
+    Avacoda No:<input type="number" class=fruitno id="ava_quan"><br/>
+</div>
+    <table class="slidemenu" id=calc>
+        <thread>
+            <tr>
+                <tbody>
+                <th>Fruits </th>
+                <th>No</th>
+                <th>Each Cost</th>
+                <th>Cost</th>
+                </tbody>
+            </tr>
+        </thread>
+        <button type="button" onclick="dispqqq()">Calculate</button>
+    </table>
                 </form>
             </td>
             <td>
@@ -60,24 +81,23 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Billamount</th>
-                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
+                        <div>
+                            <h2>grandtotal</h2>
+                            <p id="grandtotal">0</p>
+                        </div>
                     </tbody>
                 </table>
             </td>
         </tr>
     </table>
-    <div>
-        <h2>grandtotal</h2>
-        <p id="grandtotal">0</p>
-    </div>
+    
     </div>
 <script>
  
-
-var mosambi_stock=100, Watermelon_stock=80, Grapes_stock=70, Avacoda_stock=60; 
+ 
 var Mosambi_price=120, Watermelon_price=150, Grapes_price=160, Avacoda_price=180;
 var Mosambi_q=0; Watermelon_q=0; Grapes_q=0; Avacoda_q=0;
 var MosambiPriceShow ="", WatermelonPriceShow ="", GrapesPriceShow ="", AvacodaPriceShow="" ;
@@ -176,9 +196,7 @@ function insertNewRecord(data) {
     cell3 = newRow.insertCell(2);
     cell3.innerHTML = data.amount;
     cell4 = newRow.insertCell(3);
-    cell4.innerHTML = data.stock;
-    cell5 = newRow.insertCell(4);
-    cell5.innerHTML = `<a onClick="onDelete(this)">Delete</a>`;
+    cell4.innerHTML = `<a onClick="onDelete(this)">Delete</a>`;
 
 }
 
@@ -197,6 +215,10 @@ function resetForm() {
     WatermelonPriceShow ="";
     GrapesPriceShow ="";
     AvacodaPriceShow ="";
+    Mosambi_q=0; 
+    Watermelon_q=0; 
+    Grapes_q=0; 
+    Avacoda_q=0;
 
 
     //document.getElementById("AvacodaPriceShow").value = "";
@@ -223,6 +245,40 @@ function validate() {
             document.getElementById("nameValidationError").classList.add("hide");
     }
     return isValid;
+}
+var selectedRow=null
+function onFormSubmit1() {
+            var formquans = Quans();
+            if (selectedRow == null){
+                dispqqq();
+        resetForm();
+        calculatetotal()
+    }
+}
+function Quans()
+  {
+    var formquans = {};
+    formquans["mos_quan"] = document.getElementById("mos_quan").value;
+    formquans["wat_quan"] = document.getElementById("wat_quan").value;
+    formquans["gra_quan"] = document.getElementById("gra_quan").value;
+    formquans["ava_quan"] = document.getElementById("ava_quan").value;
+    return formquans;
+
+}
+
+function dispqqq() {
+   var table = document.getElementById("calc").getElementsByTagName('tbody')[0];
+   var newRow = table.insertRow(table.length);
+   cell1 = newRow.insertCell(0);
+   cell1.innerHTML = mos_quan;
+   cell2 = newRow.insertCell(1);
+   cell2.innerHTML = wat_quan;
+   cell3 = newRow.insertCell(2);
+   cell3.innerHTML = gra_quan;
+   cell4 = newRow.insertCell(3);
+   cell4.innerHTML = ava_quan;
+   var x=document.getElementById('mos_quan').value;
+document.getElementById("calc").innerHTML=x;
 }
 
 
